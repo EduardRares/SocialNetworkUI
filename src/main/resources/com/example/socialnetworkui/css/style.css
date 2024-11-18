@@ -1,0 +1,23 @@
+.button {
+    -fx-text-fill: white;
+    -fx-font-family: "Arial";
+    -fx-font-weight: bold;
+    -fx-background-color: #446dac;
+    -fx-background-radius: 25;
+    -fx-min-width: 75px;
+
+}
+.label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #000000;
+}
+.table-row-cell:selected {
+    -fx-background-color: #31527c;
+    -fx-text-fill: white;
+}
+.table-row-cell:selected .text {
+    -fx-text-fill: white;
+}
+.button:hover {
+    -fx-background-color: #1d3249;
+}
