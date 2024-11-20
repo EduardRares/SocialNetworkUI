@@ -1,15 +1,15 @@
 package com.example.socialnetworkui.utils.events;
 import com.example.socialnetworkui.domain.User;
 
-public class UtilizatorEntityChangeEvent implements Event {
+public class EntityChangeEvent implements Event {
     private ChangeEventType type;
-    private User data, oldData;
+    private Long data, oldData;
 
-    public UtilizatorEntityChangeEvent(ChangeEventType type, User data) {
+    public EntityChangeEvent(ChangeEventType type, Long data) {
         this.type = type;
         this.data = data;
     }
-    public UtilizatorEntityChangeEvent(ChangeEventType type, User data, User oldData) {
+    public EntityChangeEvent(ChangeEventType type, Long data, Long oldData) {
         this.type = type;
         this.data = data;
         this.oldData=oldData;
@@ -19,11 +19,11 @@ public class UtilizatorEntityChangeEvent implements Event {
         return type;
     }
 
-    public User getData() {
+    public Long getData() {
         return data;
     }
 
-    public User getOldData() {
+    public Long getOldData() {
         return oldData;
     }
 }

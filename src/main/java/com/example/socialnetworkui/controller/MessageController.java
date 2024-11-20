@@ -39,12 +39,15 @@ public class MessageController {
 
     @FXML
     public void init() {
-        vBox = new VBox();
         StringBuilder text = new StringBuilder("to: ");
         for (User receiver : receivers) {
             text.append(receiver.getFirstName()).append(" ").append(receiver.getLastName()).append("   ");
         }
         Label.setText(text.toString());
+
+        vBox = new VBox();
+        scrollPanel.setContent(vBox);
+        scrollPanel.setVvalue(1.0);
         if(receivers.size() == 1) {
             messageService.markRead(receivers.getFirst().getId(), user.getId());
             List<Message> messages = new ArrayList<>();
@@ -62,7 +65,6 @@ public class MessageController {
                     mess.setText(message.getFrom().getFirstName() + ": " + message.getText() + "\n");
                     vBox.getChildren().add(mess);
                 }
-                scrollPanel.setContent(vBox);
             }
         }
     }

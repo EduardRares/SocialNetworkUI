@@ -218,4 +218,29 @@ public class MessageDBRepository implements Repository<Long, Message> {
             e.printStackTrace();
         }
     }
+
+    public static Iterable<Long> noofUnreadMessages(Long id) {
+        List<Long> messages = new ArrayList<>();
+        try {
+            Properties properties = MessageDBRepository.getProperties();
+            Connection connection = DriverManager.getConnection(properties.getProperty(PATH_TO_URL), properties.getProperty(PATH_TO_USERNAME), properties.getProperty(PATH_TO_PASSWORD));
+            PreparedStatement statement = connection.prepareStatement("select message_id from receiver where user_id=? and readed=0");
+            statement.setLong(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            while(resultSet.next()) {
+                Long id1 = resultSet.getLong(1);
+                PreparedStatement statement1 = connection.prepareStatement("select sender from message where id=?");
+                statement1.setLong(1, id1);
+                ResultSet resultSet1 = statement1.executeQuery();
+                while(resultSet1.next()) {
+                    Long id2 = resultSet1.getLong(1);
+                    messages.add(id2);
+                }
+            }
+            return messages;
+        }catch (SQLException | IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

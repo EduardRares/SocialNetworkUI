@@ -4,12 +4,15 @@ import com.example.socialnetworkui.domain.Friendship;
 import com.example.socialnetworkui.domain.Tuple;
 import com.example.socialnetworkui.repository.Repository;
 import com.example.socialnetworkui.repository.db.FriendshipDBRepository;
+import com.example.socialnetworkui.utils.events.EntityChangeEvent;
+import com.example.socialnetworkui.utils.observer.Observable;
+import com.example.socialnetworkui.utils.observer.Observer;
 
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
-public class FriendshipService {
+public class FriendshipService implements Observable<EntityChangeEvent> {
     private final Repository<Tuple<Long, Long>, Friendship> friendshipRepository;
 
     public FriendshipService(Repository<Tuple<Long, Long>, Friendship> friendshipRepository) {
@@ -79,5 +82,24 @@ public class FriendshipService {
 
     public Iterable<Long> friendRequests(Long id1) {
         return FriendshipDBRepository.receivedFriendRequest(id1);
+    }
+
+    public Iterable<Long> noofFriendRequests(Long id) {
+        return FriendshipDBRepository.noofFriendRequests(id);
+    }
+
+    @Override
+    public void addObserver(Observer<EntityChangeEvent> e) {
+
+    }
+
+    @Override
+    public void removeObserver(Observer<EntityChangeEvent> e) {
+
+    }
+
+    @Override
+    public void notifyObservers(EntityChangeEvent t) {
+
     }
 }

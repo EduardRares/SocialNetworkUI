@@ -240,6 +240,26 @@ public class FriendshipDBRepository implements Repository<Tuple<Long, Long>, Fri
         return users;
     }
 
+    public static Iterable<Long> noofFriendRequests(Long id) {
+        Set<Long> user_ids = new HashSet<>();
+        try {
+            Properties properties = FriendshipDBRepository.getProperties();
+            Connection connection = DriverManager.getConnection(properties.getProperty(PATH_TO_URL), properties.getProperty(PATH_TO_USERNAME), properties.getProperty(PATH_TO_PASSWORD));
+
+            PreparedStatement statement = connection.prepareStatement("select user_id1 from friendships WHERE user_id2=? and pending=1");
+            statement.setLong(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            while( resultSet.next()) {
+                Long id1 = resultSet.getLong("user_id1");
+                user_ids.add(id1);
+            }
+            return user_ids;
+        }catch (SQLException | IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     private static Properties getProperties() throws IOException {
         InputStream input = new FileInputStream("D:\\Faculta\\MAP\\SocialNetworkUI1\\src\\main\\resources\\app.properties");
         Properties properties = new Properties();

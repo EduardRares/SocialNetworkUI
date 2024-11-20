@@ -1,10 +1,13 @@
 package com.example.socialnetworkui.controller;
 
 import com.example.socialnetworkui.HelloApplication;
-import com.example.socialnetworkui.domain.User;
+import com.example.socialnetworkui.domain.*;
 import com.example.socialnetworkui.service.FriendshipService;
 import com.example.socialnetworkui.service.MessageService;
 import com.example.socialnetworkui.service.UserService;
+import com.example.socialnetworkui.utils.events.ChangeEventType;
+import com.example.socialnetworkui.utils.events.EntityChangeEvent;
+import com.example.socialnetworkui.utils.observer.Observer;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -24,8 +27,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class UserController {
+public class UserController implements Observer<EntityChangeEvent> {
     public Button buttonText;
+    public Button buttonNofication;
     private Stage dialogStage;
     private Stage loginStage;
     private User user;
@@ -34,6 +38,7 @@ public class UserController {
     private UserService userService;
     private FriendshipService friendshipService;
     private MessageService messageService;
+    private List<Entity> listofNotifications = new ArrayList<>();
     ObservableList<User> model = FXCollections.observableArrayList();
     ObservableList<User> modelMessageFriends = FXCollections.observableArrayList();
 
@@ -59,14 +64,30 @@ public class UserController {
         this.friendshipService = friendshipService;
         this.messageService = messageService;
         this.user = user;
+        messageService.addObserver(this);
         friend = null;
         listofFriends = new ArrayList<>();
+        noofNofications();
     }
     public void setStages(Stage dialogStage, Stage loginStage) {
         this.dialogStage = dialogStage;
         this.loginStage = loginStage;
         dialogStage.setTitle("Social Network");
         dialogStage.show();
+    }
+
+    private void noofNofications() {
+        for(Long m : messageService.noofMessages(user.getId()))
+        {
+            listofNotifications.add(new Message("", userService.userById(m).get(), null, null));
+        }
+        for(Long f : friendshipService.noofFriendRequests(user.getId()))
+        {
+            Friendship d = new Friendship();
+            d.setId(new Tuple<Long, Long>(f, user.getId()));
+            listofNotifications.add(d);
+        }
+        buttonNofication.setText(listofNotifications.size() + " Not.");
     }
 
     @FXML
@@ -112,9 +133,11 @@ public class UserController {
         tableViewFriends1.setVisible(false);
         tableViewFriends.setVisible(true);
         model.clear();
-        for(Long id : friendshipService.friendRequests(user.getId())) {
-            Optional<User> user = userService.userById(id);
-            user.ifPresent(value -> model.add(value));
+        for(Entity entity : listofNotifications) {
+            if(entity instanceof Friendship) {
+                Friendship d = (Friendship) entity;
+                model.add(userService.userById(d.getId().getLeft()).get());
+            }
         }
         tableViewFriends.setItems(model);
         buttonDelete.setVisible(true);
@@ -173,6 +196,10 @@ public class UserController {
         }
         else {
             friendshipService.sendFriendRequest(user.getId(), friend.getId());
+            Friendship d = new Friendship();
+            d.setId(new Tuple<Long, Long>(friend.getId(), user.getId()));
+            listofNotifications.remove(d);
+            buttonNofication.setText(listofNotifications.size() + " Not.");
             handleFriendRequest();
         }
         friend = null;
@@ -186,6 +213,10 @@ public class UserController {
         }
         else {
             friendshipService.deleteFriendship(user.getId(), friend.getId());
+            Friendship d = new Friendship();
+            d.setId(new Tuple<Long, Long>(friend.getId(), user.getId()));
+            listofNotifications.remove(d);
+            buttonNofication.setText(listofNotifications.size() + " Not.");
             handleFriendRequest();
         }
         friend = null;
@@ -206,6 +237,30 @@ public class UserController {
         MessageController messageController = fxmlLoader.getController();
         messageController.setService(messageService, userService);
         messageController.setReceivers(user, listofFriends);
+        if(listofNotifications.size() == 1) {
+            Message m = new Message("", listofFriends.getFirst(), null, null);
+            while(listofNotifications.remove(m)) {};
+            buttonNofication.setText(listofNotifications.size() + " Not.");
+        }
         stage.showAndWait();
+    }
+
+    public void handleNotification() throws IOException {
+        Stage stage = new Stage();
+        stage.setTitle("Notifications");
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("views/NotificationView.fxml"));
+        AnchorPane userLayout = fxmlLoader.load();
+        stage.setScene(new Scene(userLayout));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        NotificationController notificationController = fxmlLoader.getController();
+        notificationController.setService(userService);
+        notificationController.setList(listofNotifications);
+        stage.showAndWait();
+    }
+
+    @Override
+    public void update(EntityChangeEvent event) {
+        ChangeEventType eventType = event.getType();
+
     }
 }

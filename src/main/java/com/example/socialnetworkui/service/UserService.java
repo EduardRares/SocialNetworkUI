@@ -9,6 +9,7 @@ import java.util.Optional;
 
 public class UserService {
     private final Repository<Long, User> userRepository;
+
     public UserService(Repository<Long, User> repository) {
         this.userRepository = repository;
     }

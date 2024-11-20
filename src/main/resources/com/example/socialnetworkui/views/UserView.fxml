@@ -70,6 +70,7 @@
                         <Font name="Arial" size="14.0" />
                      </font>
                   </Button>
+                  <Button fx:id="buttonNofication" layoutX="10.0" layoutY="457.0" mnemonicParsing="false" onAction="#handleNotification" textFill="RED" />
                </children></AnchorPane>
         </items>
       </SplitPane>
