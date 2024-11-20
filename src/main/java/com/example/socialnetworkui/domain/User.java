@@ -8,7 +8,6 @@ public class User extends Entity<Long>{
     private String lastName;
     private String email;
     private String password;
-    private final List<User> friends;
 
     public void setEmail(String email) {
         this.email = email;
@@ -27,7 +26,6 @@ public class User extends Entity<Long>{
         this.lastName = lastName;
         this.email = email;
         this.password = password;
-        friends = new ArrayList<User>();
     }
 
     public String getFirstName() {
@@ -47,18 +45,12 @@ public class User extends Entity<Long>{
     }
 
     public String getEmail() { return email; }
-    public List<User> getFriends() {
-        return friends;
-    }
-    public void addFriend(User friend) { this.friends.add(friend);}
-    public void removeFriend(User friend) { this.friends.remove(friend);}
 
     @Override
     public String toString() {
         return "User{" +
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", friends=" + friends +
                 '}';
     }
 
@@ -72,6 +64,6 @@ public class User extends Entity<Long>{
 
     @Override
     public int hashCode() {
-        return Objects.hash(getFirstName(), getLastName(), getFriends());
+        return Objects.hash(getFirstName(), getLastName());
     }
 }

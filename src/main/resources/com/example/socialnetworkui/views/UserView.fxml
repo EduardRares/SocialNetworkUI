@@ -31,6 +31,11 @@
                               <Font name="Arial" size="14.0" />
                            </font>
                         </Button>
+                        <Button mnemonicParsing="false" onAction="#handleMessageFriend" prefHeight="32.0" prefWidth="127.0" text="Message">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </Button>
                      </children>
                   </VBox>
                    <Button layoutX="64.0" layoutY="439.0" mnemonicParsing="false" onAction="#handleLogout" text="Logout" textAlignment="CENTER">
@@ -42,6 +47,12 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
+                  <TableView fx:id="tableViewFriends1" layoutX="14.0" layoutY="14.0" prefHeight="425.0" prefWidth="477.0">
+                     <columns>
+                        <TableColumn fx:id="tableColumnFirstNameFriends1" prefWidth="238.0" text="FirstName" />
+                        <TableColumn fx:id="tableColumnLastNameFriends1" minWidth="0.0" prefWidth="238.0" text="LastName" />
+                     </columns>
+                  </TableView>
                   <TableView fx:id="tableViewFriends" layoutX="14.0" layoutY="14.0" prefHeight="425.0" prefWidth="477.0">
                     <columns>
                       <TableColumn fx:id="tableColumnFirstNameFriends" prefWidth="238.0" text="FirstName" />
@@ -54,6 +65,11 @@
                      </font>
                   </Button>
                   <Button fx:id="buttonDelete" layoutX="418.0" layoutY="459.0" mnemonicParsing="false" onAction="#handleDelete" text="Delete" />
+                  <Button fx:id="buttonText" layoutX="251.0" layoutY="459.0" mnemonicParsing="false" onAction="#handleText" prefHeight="26.0" prefWidth="75.0" text="Text">
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font>
+                  </Button>
                </children></AnchorPane>
         </items>
       </SplitPane>

@@ -3,7 +3,7 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.53">
     <root id="1">
       <DateStyle>mdy</DateStyle>
-      <IntrospectionStateNumber>1010</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1046</IntrospectionStateNumber>
       <ServerVersion>17.0</ServerVersion>
       <StartupTime>1731792858</StartupTime>
       <TimeZones>true ACDT
@@ -801,7 +801,7 @@ false Zulu
 14751||10|C|G
 14751||-9223372036854775808|U|G
 14751||10|U|G</Grants>
-      <IntrospectionStateNumber>1010</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1046</IntrospectionStateNumber>
       <ObjectId>5</ObjectId>
       <OwnerName>postgres</OwnerName>
     </database>
@@ -4223,8 +4223,8 @@ false Zulu
     <schema id="264" parent="2" name="public">
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <IntrospectionStateNumber>1010</IntrospectionStateNumber>
-      <LastIntrospectionLocalTimestamp>2024-11-18.21:45:14</LastIntrospectionLocalTimestamp>
+      <IntrospectionStateNumber>1046</IntrospectionStateNumber>
+      <LastIntrospectionLocalTimestamp>2024-11-19.19:46:46</LastIntrospectionLocalTimestamp>
       <ObjectId>2200</ObjectId>
       <StateNumber>532</StateNumber>
       <OwnerName>pg_database_owner</OwnerName>
@@ -4259,7 +4259,7 @@ false Zulu
     </table>
     <table id="269" parent="264" name="receiver">
       <ObjectId>24714</ObjectId>
-      <StateNumber>1009</StateNumber>
+      <StateNumber>1045</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
@@ -4396,7 +4396,13 @@ user_id2</ColNames>
       <StoredType>integer|0s</StoredType>
       <TypeId>23</TypeId>
     </column>
-    <foreign-key id="288" parent="269" name="receiver_message_id_fkey">
+    <column id="288" parent="269" name="readed">
+      <Position>3</Position>
+      <StateNumber>1045</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <TypeId>23</TypeId>
+    </column>
+    <foreign-key id="289" parent="269" name="receiver_message_id_fkey">
       <ColNames>message_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>24719</ObjectId>
@@ -4405,7 +4411,7 @@ user_id2</ColNames>
       <RefKeyColPositions>1</RefKeyColPositions>
       <RefTableId>24702</RefTableId>
     </foreign-key>
-    <foreign-key id="289" parent="269" name="receiver_user_id_fkey">
+    <foreign-key id="290" parent="269" name="receiver_user_id_fkey">
       <ColNames>user_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>24724</ObjectId>
@@ -4414,7 +4420,7 @@ user_id2</ColNames>
       <RefKeyColPositions>1</RefKeyColPositions>
       <RefTableId>16397</RefTableId>
     </foreign-key>
-    <index id="290" parent="269" name="receiver_pkey">
+    <index id="291" parent="269" name="receiver_pkey">
       <ColNames>message_id
 user_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
@@ -4424,14 +4430,14 @@ user_id</ColNames>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="291" parent="269" name="receiver_pkey">
+    <key id="292" parent="269" name="receiver_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>24718</ObjectId>
       <Primary>1</Primary>
       <StateNumber>1009</StateNumber>
       <UnderlyingIndexId>24717</UnderlyingIndexId>
     </key>
-    <column id="292" parent="270" name="user_id">
+    <column id="293" parent="270" name="user_id">
       <DefaultExpression>nextval(&apos;users_user_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -4440,35 +4446,35 @@ user_id</ColNames>
       <SequenceId>16396</SequenceId>
       <TypeId>23</TypeId>
     </column>
-    <column id="293" parent="270" name="firstname">
+    <column id="294" parent="270" name="firstname">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StateNumber>776</StateNumber>
       <StoredType>varchar(50)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="294" parent="270" name="lastname">
+    <column id="295" parent="270" name="lastname">
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StateNumber>776</StateNumber>
       <StoredType>varchar(50)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="295" parent="270" name="email">
+    <column id="296" parent="270" name="email">
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StateNumber>776</StateNumber>
       <StoredType>varchar(50)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="296" parent="270" name="password">
+    <column id="297" parent="270" name="password">
       <NotNull>1</NotNull>
       <Position>5</Position>
       <StateNumber>776</StateNumber>
       <StoredType>varchar(50)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <index id="297" parent="270" name="users_pkey">
+    <index id="298" parent="270" name="users_pkey">
       <ColNames>user_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16401</ObjectId>
@@ -4477,7 +4483,7 @@ user_id</ColNames>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <index id="298" parent="270" name="users_email_key">
+    <index id="299" parent="270" name="users_email_key">
       <ColNames>email</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16403</ObjectId>
@@ -4488,14 +4494,14 @@ user_id</ColNames>
       <CollationIds>100</CollationIds>
       <CollationParentNames>pg_catalog</CollationParentNames>
     </index>
-    <key id="299" parent="270" name="users_pkey">
+    <key id="300" parent="270" name="users_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16402</ObjectId>
       <Primary>1</Primary>
       <StateNumber>776</StateNumber>
       <UnderlyingIndexId>16401</UnderlyingIndexId>
     </key>
-    <key id="300" parent="270" name="users_email_key">
+    <key id="301" parent="270" name="users_email_key">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16404</ObjectId>
       <StateNumber>776</StateNumber>

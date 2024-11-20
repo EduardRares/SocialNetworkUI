@@ -5,7 +5,6 @@ import com.example.socialnetworkui.domain.validators.ValidationException;
 import com.example.socialnetworkui.repository.*;
 import com.example.socialnetworkui.repository.db.UserDBRepository;
 
-import java.util.NoSuchElementException;
 import java.util.Optional;
 
 public class UserService {
@@ -31,14 +30,7 @@ public class UserService {
     public Optional<User> deleteUser(Long id) throws ValidationException {
         Optional<User> user = userRepository.findOne(id);
         if(user.isEmpty()) throw new ValidationException("Nu exista userul cu id-ul dat");
-        Optional<User> temp = userRepository.delete(user.get().getId());
-        for(User u : userRepository.findAll()) {
-            if(u.getFriends().contains(user.get())) {
-                u.removeFriend(user.get());
-                userRepository.update(u);
-            }
-        }
-        return temp;
+        return userRepository.delete(user.get().getId());
     }
 
     public User updateUser(User user) throws ValidationException {

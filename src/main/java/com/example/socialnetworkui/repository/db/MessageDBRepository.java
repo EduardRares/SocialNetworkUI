@@ -85,7 +85,43 @@ public class MessageDBRepository implements Repository<Long, Message> {
         return null;
     }
 
-    private User findUser(long id) {
+    public static Iterable<Message> findAllbyUser(Long userId) {
+        Set<Message> messages = new HashSet<>();
+        try {
+            Properties properties = MessageDBRepository.getProperties();
+            Connection connection = DriverManager.getConnection(properties.getProperty(PATH_TO_URL), properties.getProperty(PATH_TO_USERNAME), properties.getProperty(PATH_TO_PASSWORD));
+            PreparedStatement statement = connection.prepareStatement("SELECT * from message where sender=?");
+            statement.setLong(1, userId);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                Long id = resultSet.getLong("id");
+                String text = resultSet.getString("text");
+                Long ids = resultSet.getLong("sender");
+                Timestamp ts = resultSet.getTimestamp("date");
+                LocalDateTime localDt = null;
+                if (ts != null)
+                    localDt = LocalDateTime.ofInstant(Instant.ofEpochMilli(ts.getTime()), ZoneOffset.UTC);
+                Message m = new Message(text, findUser(ids), localDt, new ArrayList<>());
+                m.setId(id);
+                PreparedStatement statementReceiver = connection.prepareStatement("SELECT * from receiver where message_id=?");
+                statementReceiver.setLong(1, id);
+                ResultSet resultSetReceiver = statementReceiver.executeQuery();
+                while (resultSetReceiver.next()) {
+                    Long idReceiver = resultSetReceiver.getLong("user_id");
+                    m.addToUser(findUser(idReceiver));
+                }
+                messages.add(m);
+            }
+            return messages;
+        } catch (SQLException | IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+
+    }
+
+    private static User findUser(long id) {
         try {
             Properties properties = MessageDBRepository.getProperties();
             Connection connection = DriverManager.getConnection(properties.getProperty(PATH_TO_URL), properties.getProperty(PATH_TO_USERNAME), properties.getProperty(PATH_TO_PASSWORD));
@@ -109,7 +145,7 @@ public class MessageDBRepository implements Repository<Long, Message> {
 
     @Override
     public Optional<Message> save(Message entity) {
-        String query = "insert into message(text, sender, date) values(?, ?, ?)";
+        String query = "insert into message(text, sender, date) values(?, ?, ?) returning id";
         try {
             Properties properties = MessageDBRepository.getProperties();
             Connection connection = DriverManager.getConnection(properties.getProperty(PATH_TO_URL), properties.getProperty(PATH_TO_USERNAME), properties.getProperty(PATH_TO_PASSWORD));
@@ -121,9 +157,9 @@ public class MessageDBRepository implements Repository<Long, Message> {
                 ts = new Timestamp(entity.getDate().toInstant(ZoneOffset.UTC).toEpochMilli());
             ps.setTimestamp(3, ts);
             ResultSet resultSet = ps.executeQuery();
-
+            resultSet.next();
             Long message_id = resultSet.getLong("id");
-            String query1 = "insert into receiver(message_id, user_id) values(?, ?)";
+            String query1 = "insert into receiver(message_id, user_id, readed) values(?, ?, 0)";
             ps = connection.prepareStatement(query1);
             ps.setLong(1, message_id);
             for(User u : entity.getTo()) {
@@ -162,5 +198,24 @@ public class MessageDBRepository implements Repository<Long, Message> {
         Properties properties = new Properties();
         properties.load(input);
         return properties;
+    }
+
+    public static void markRead(Long from, Long to) {
+        try {
+            Properties properties = MessageDBRepository.getProperties();
+            Connection connection = DriverManager.getConnection(properties.getProperty(PATH_TO_URL), properties.getProperty(PATH_TO_USERNAME), properties.getProperty(PATH_TO_PASSWORD));
+            PreparedStatement statement = connection.prepareStatement("select id from message where sender=?");
+            statement.setLong(1, from);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                Long mess_id = resultSet.getLong("id");
+                PreparedStatement statement1 = connection.prepareStatement("update receiver set readed=1 where user_id=? and message_id=?");
+                statement1.setLong(1, to);
+                statement1.setLong(2, mess_id);
+                statement1.executeUpdate();
+            }
+        }catch (SQLException | IOException e) {
+            e.printStackTrace();
+        }
     }
 }

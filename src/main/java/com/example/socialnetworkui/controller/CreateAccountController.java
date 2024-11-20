@@ -42,6 +42,7 @@ public class CreateAccountController {
         User user = new User(firstname, lastname, email, password);
         try {
             service.addUser(user);
+            MessageAlert.showMessage(null, Alert.AlertType.INFORMATION,"Succes","Userul a fost creat cu succes");
         } catch (ValidationException e) {
             MessageAlert.showMessage(null, Alert.AlertType.INFORMATION,"Error","Userul exista deja");
         }

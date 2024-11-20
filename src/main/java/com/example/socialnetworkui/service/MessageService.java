@@ -23,4 +23,12 @@ public class MessageService {
         if(message.isEmpty()) throw new ValidationException("Nu exista mesajul cu id-ul dat");
         return repo.delete(message.get().getId());
     }
+
+    public Iterable<Message> findAllbyUser(Long id) {
+        return MessageDBRepository.findAllbyUser(id);
+    }
+
+    public void markRead(Long from, Long to) {
+        MessageDBRepository.markRead(from, to);
+    }
 }

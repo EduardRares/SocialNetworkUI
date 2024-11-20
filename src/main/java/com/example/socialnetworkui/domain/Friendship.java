@@ -4,7 +4,6 @@ import java.time.LocalDateTime;
 public class Friendship extends Entity<Tuple<Long, Long>> {
 
     private LocalDateTime date;
-    private Boolean pending;
     public Friendship() {
         date = LocalDateTime.now();
     }
@@ -23,13 +22,5 @@ public class Friendship extends Entity<Tuple<Long, Long>> {
     @Override
     public String toString() {
         return "Friendship [date=" + date + "]";
-    }
-
-    public void setPending(Boolean pending) {
-        this.pending = pending;
-    }
-
-    public Boolean getPending() {
-        return pending;
     }
 }

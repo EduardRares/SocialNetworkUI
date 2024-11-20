@@ -4,6 +4,7 @@ import com.example.socialnetworkui.HelloApplication;
 import com.example.socialnetworkui.domain.User;
 import com.example.socialnetworkui.domain.validators.ValidationException;
 import com.example.socialnetworkui.service.FriendshipService;
+import com.example.socialnetworkui.service.MessageService;
 import com.example.socialnetworkui.utils.observer.Observer;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -28,6 +29,7 @@ public class LogInController {
 
     private UserService service;
     private FriendshipService friendshipService;
+    private MessageService messageService;
     private Stage dialogStage;
     private User user;
 
@@ -35,9 +37,10 @@ public class LogInController {
     private void initialize() {
     }
 
-    public void setService(UserService service, FriendshipService friendshipService, Stage stage) {
+    public void setService(UserService service, FriendshipService friendshipService, MessageService messageService, Stage stage) {
         this.service = service;
         this.friendshipService = friendshipService;
+        this.messageService = messageService;
         this.dialogStage=stage;
     }
 
@@ -64,7 +67,7 @@ public class LogInController {
                 AnchorPane UserLayout = fxmlLoaderUser.load();
                 app.setScene(new Scene(UserLayout));
                 UserController userController = fxmlLoaderUser.getController();
-                userController.setService(service, friendshipService, user);
+                userController.setService(service, friendshipService, messageService, user);
                 userController.setStages(app, this.dialogStage);
             }
         }

@@ -2,13 +2,16 @@ package com.example.socialnetworkui;
 
 import com.example.socialnetworkui.controller.LogInController;
 import com.example.socialnetworkui.domain.Friendship;
+import com.example.socialnetworkui.domain.Message;
 import com.example.socialnetworkui.domain.Tuple;
 import com.example.socialnetworkui.domain.User;
 import com.example.socialnetworkui.domain.validators.UtilizatorValidator;
 import com.example.socialnetworkui.repository.Repository;
 import com.example.socialnetworkui.repository.db.FriendshipDBRepository;
+import com.example.socialnetworkui.repository.db.MessageDBRepository;
 import com.example.socialnetworkui.repository.db.UserDBRepository;
 import com.example.socialnetworkui.service.FriendshipService;
+import com.example.socialnetworkui.service.MessageService;
 import com.example.socialnetworkui.service.UserService;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -19,8 +22,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class HelloApplication extends Application {
-    UserService service;
-    FriendshipService friendshipService;
+    private UserService service;
+    private FriendshipService friendshipService;
+    private MessageService messageService;
 
     public static void main(String[] args) {
         launch(args);
@@ -36,6 +40,9 @@ public class HelloApplication extends Application {
 
         Repository<Tuple<Long, Long>, Friendship> friendshipRepository = new FriendshipDBRepository();
         friendshipService = new FriendshipService(friendshipRepository);
+
+        Repository<Long, Message> messageRepository = new MessageDBRepository();
+        messageService = new MessageService(messageRepository);
 
         login.setTitle("Login");
 
@@ -55,6 +62,6 @@ public class HelloApplication extends Application {
         AnchorPane userLayout = fxmlLoader.load();
         login.setScene(new Scene(userLayout));
         LogInController editUserController = fxmlLoader.getController();
-        editUserController.setService(service, friendshipService, login);
+        editUserController.setService(service, friendshipService, messageService, login);
     }
 }
