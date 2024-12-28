@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-public class InMemoryRepository<ID, E extends Entity<ID>> implements Repository<ID,E> {
+public   class InMemoryRepository<ID, E extends Entity<ID>> implements Repository<ID,E> {
 
     private Validator<E> validator;
     protected Map<ID,E> entities;

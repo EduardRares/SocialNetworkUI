@@ -1,6 +1,8 @@
 package com.example.socialnetworkui.service;
 
 import com.example.socialnetworkui.domain.Friendship;
+import com.example.socialnetworkui.utils.Page;
+import com.example.socialnetworkui.utils.Pageable;
 import com.example.socialnetworkui.domain.Tuple;
 import com.example.socialnetworkui.repository.Repository;
 import com.example.socialnetworkui.repository.db.FriendshipDBRepository;
@@ -53,6 +55,8 @@ public class FriendshipService implements Observable<EntityChangeEvent> {
         return FriendshipDBRepository.findById(id);
     }
 
+    public Page<Long> FriendsofanIdForPage(Long id, Pageable pageable) {return FriendshipDBRepository.FriendsofanIdForPage(id, pageable);}
+
     /**
      *
      * @return Iterable<Friendship> - all Friendship relations
@@ -86,6 +90,10 @@ public class FriendshipService implements Observable<EntityChangeEvent> {
 
     public Iterable<Long> noofFriendRequests(Long id) {
         return FriendshipDBRepository.noofFriendRequests(id);
+    }
+
+    public int noofFriends(Long id) {
+        return FriendshipDBRepository.noofFriends(id);
     }
 
     @Override

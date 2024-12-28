@@ -7,6 +7,25 @@
     -fx-min-width: 75px;
 
 }
+
+#buttonNext{
+    -fx-text-fill: white;
+    -fx-font-family: "Arial";
+    -fx-font-weight: bold;
+    -fx-background-color: #446dac;
+    -fx-background-radius: 25;
+    -fx-min-width: 25px;
+}
+
+#buttonPrevious {
+    -fx-text-fill: white;
+    -fx-font-family: "Arial";
+    -fx-font-weight: bold;
+    -fx-background-color: #446dac;
+    -fx-background-radius: 25;
+    -fx-min-width: 25px;
+}
+
 .label {
     -fx-font-size: 14px;
     -fx-text-fill: #000000;

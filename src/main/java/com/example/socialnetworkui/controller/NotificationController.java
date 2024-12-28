@@ -32,8 +32,9 @@ public class NotificationController {
     }
 
     private void init() {
-        for(int i = 0; i < listofNotifications.size(); i++) {
-            Entity entity = listofNotifications.get(i);
+        List<Entity> listofNotificationsCopy = new ArrayList<>(listofNotifications);
+        for(int i = 0; i < listofNotificationsCopy.size(); i++) {
+            Entity entity = listofNotificationsCopy.get(i);
             if(entity instanceof Friendship) {
                 Label label = new Label();
                 label.autosize();
@@ -45,7 +46,7 @@ public class NotificationController {
                 Label label = new Label();
                 Message m = (Message) entity;
                 int contor = 0;
-                while(listofNotifications.remove(m)) {
+                while(listofNotificationsCopy.remove(m)) {
                     contor++;
                 }
                 i--;

@@ -10,6 +10,7 @@ import com.example.socialnetworkui.repository.Repository;
 import com.example.socialnetworkui.repository.db.FriendshipDBRepository;
 import com.example.socialnetworkui.repository.db.MessageDBRepository;
 import com.example.socialnetworkui.repository.db.UserDBRepository;
+import com.example.socialnetworkui.repository.memory.InMemoryRepository;
 import com.example.socialnetworkui.service.FriendshipService;
 import com.example.socialnetworkui.service.MessageService;
 import com.example.socialnetworkui.service.UserService;

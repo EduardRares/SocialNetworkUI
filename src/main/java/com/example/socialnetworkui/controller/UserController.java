@@ -5,6 +5,7 @@ import com.example.socialnetworkui.domain.*;
 import com.example.socialnetworkui.service.FriendshipService;
 import com.example.socialnetworkui.service.MessageService;
 import com.example.socialnetworkui.service.UserService;
+import com.example.socialnetworkui.utils.Pageable;
 import com.example.socialnetworkui.utils.events.ChangeEventType;
 import com.example.socialnetworkui.utils.events.EntityChangeEvent;
 import com.example.socialnetworkui.utils.observer.Observer;
@@ -13,10 +14,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.SelectionMode;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
@@ -39,6 +37,8 @@ public class UserController implements Observer<EntityChangeEvent> {
     private FriendshipService friendshipService;
     private MessageService messageService;
     private List<Entity> listofNotifications = new ArrayList<>();
+    private int currentPage;
+    private int records;
     ObservableList<User> model = FXCollections.observableArrayList();
     ObservableList<User> modelMessageFriends = FXCollections.observableArrayList();
 
@@ -58,6 +58,12 @@ public class UserController implements Observer<EntityChangeEvent> {
     Button buttonAdd;
     @FXML
     Button buttonDelete;
+    @FXML
+    Button buttonNext;
+    @FXML
+    Button buttonPrevious;
+    @FXML
+    Label labelPage;
 
     public void setService(UserService Userservice, FriendshipService friendshipService, MessageService messageService, User user) {
         this.userService = Userservice;
@@ -95,6 +101,9 @@ public class UserController implements Observer<EntityChangeEvent> {
         buttonAdd.setVisible(false);
         buttonDelete.setVisible(false);
         buttonText.setVisible(false);
+        buttonNext.setVisible(false);
+        buttonPrevious.setVisible(false);
+        labelPage.setVisible(false);
         tableViewFriends1.setVisible(false);
         tableViewFriends.setVisible(false);
         tableColumnFirstNameFriends1.setCellValueFactory(new PropertyValueFactory<User, String>("firstName"));
@@ -117,14 +126,22 @@ public class UserController implements Observer<EntityChangeEvent> {
         tableViewFriends1.setVisible(false);
         tableViewFriends.setVisible(true);
         model.clear();
-        for(Long id : friendshipService.FriendsofanId(user.getId())) {
+        currentPage = 1;
+        records = friendshipService.noofFriends(user.getId());
+        if(records % 2 == 1) records++;
+        labelPage.setText(currentPage + " of " + records / 2);
+        Pageable pageable = new Pageable(currentPage, 2);
+        for(Long id : friendshipService.FriendsofanIdForPage(user.getId(), pageable).getElements()) {
             Optional<User> user = userService.userById(id);
             user.ifPresent(value -> model.add(value));
         }
         tableViewFriends.setItems(model);
         buttonDelete.setVisible(true);
+        buttonNext.setVisible(true);
+        buttonPrevious.setVisible(true);
         buttonAdd.setVisible(false);
         buttonText.setVisible(false);
+        labelPage.setVisible(true);
         friend = null;
     }
 
@@ -142,7 +159,10 @@ public class UserController implements Observer<EntityChangeEvent> {
         tableViewFriends.setItems(model);
         buttonDelete.setVisible(true);
         buttonAdd.setVisible(true);
+        buttonNext.setVisible(false);
+        buttonPrevious.setVisible(false);
         buttonText.setVisible(false);
+        labelPage.setVisible(false);
         friend = null;
     }
 
@@ -168,8 +188,11 @@ public class UserController implements Observer<EntityChangeEvent> {
         }
         tableViewFriends.setItems(model);
         buttonAdd.setVisible(true);
+        buttonNext.setVisible(false);
+        buttonPrevious.setVisible(false);
         buttonDelete.setVisible(false);
         buttonText.setVisible(false);
+        labelPage.setVisible(false);
         friend = null;
     }
 
@@ -183,9 +206,12 @@ public class UserController implements Observer<EntityChangeEvent> {
             user.ifPresent(value -> modelMessageFriends.add(value));
         }
         tableViewFriends1.setItems(modelMessageFriends);
+        buttonNext.setVisible(false);
+        buttonPrevious.setVisible(false);
         buttonAdd.setVisible(false);
         buttonDelete.setVisible(false);
         buttonText.setVisible(true);
+        labelPage.setVisible(false);
     }
 
     @FXML
@@ -262,5 +288,30 @@ public class UserController implements Observer<EntityChangeEvent> {
     public void update(EntityChangeEvent event) {
         ChangeEventType eventType = event.getType();
 
+    }
+    public void handleNext() {
+        if(currentPage < records / 2) {
+            model.clear();
+            currentPage++;
+            Pageable pageable = new Pageable(currentPage, 2);
+            for (Long id : friendshipService.FriendsofanIdForPage(user.getId(), pageable).getElements()) {
+                Optional<User> user = userService.userById(id);
+                user.ifPresent(value -> model.add(value));
+            }
+            labelPage.setText(currentPage + " of " + records / 2);
+        }
+    }
+
+    public void handlePrevious() {
+        if(currentPage > 1) {
+            model.clear();
+            currentPage--;
+            Pageable pageable = new Pageable(currentPage, 2);
+            for (Long id : friendshipService.FriendsofanIdForPage(user.getId(), pageable).getElements()) {
+                Optional<User> user = userService.userById(id);
+                user.ifPresent(value -> model.add(value));
+            }
+            labelPage.setText(currentPage + " of " + records / 2);
+        }
     }
 }

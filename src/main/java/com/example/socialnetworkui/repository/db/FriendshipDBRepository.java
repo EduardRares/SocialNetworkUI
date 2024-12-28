@@ -1,13 +1,14 @@
 package com.example.socialnetworkui.repository.db;
 
 import com.example.socialnetworkui.domain.Friendship;
+import com.example.socialnetworkui.utils.Page;
+import com.example.socialnetworkui.utils.Pageable;
 import com.example.socialnetworkui.domain.Tuple;
 import com.example.socialnetworkui.repository.Repository;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.annotation.Retention;
 import java.sql.*;
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -95,6 +96,36 @@ public class FriendshipDBRepository implements Repository<Tuple<Long, Long>, Fri
         }
         return null;
     }
+
+    public static Page<Long> FriendsofanIdForPage(Long id, Pageable pageable) {
+        Set<Long> ids = new HashSet<>();
+        try {
+            Properties properties = FriendshipDBRepository.getProperties();
+            Connection connection = DriverManager.getConnection(properties.getProperty(PATH_TO_URL), properties.getProperty(PATH_TO_USERNAME), properties.getProperty(PATH_TO_PASSWORD));
+            PreparedStatement statement = connection.prepareStatement("SELECT * from friendships where user_id1=? or user_id2=? and pending=0 limit ? offset ?");
+            statement.setLong(1, id);
+            statement.setLong(2, id);
+            statement.setInt(3, pageable.getPageSize());
+            statement.setInt(4, pageable.getPageSize() * (pageable.getPageNumber() - 1));
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                Long id1 = resultSet.getLong("user_id1");
+                Long id2 = resultSet.getLong("user_id2");
+                int pending = resultSet.getInt("pending");
+                if(pending == 0) {
+                    if(id1.equals(id)) ids.add(id2);
+                    else ids.add(id1);
+                }
+            }
+            return new Page<Long>(ids);
+        } catch (SQLException | IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
 
     public static Boolean inPending(Long id1, Long toId2) {
         Boolean pending = false;
@@ -258,6 +289,25 @@ public class FriendshipDBRepository implements Repository<Tuple<Long, Long>, Fri
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static int noofFriends(Long id) {
+        int count = 0;
+        try {
+            Properties properties = FriendshipDBRepository.getProperties();
+            Connection connection = DriverManager.getConnection(properties.getProperty(PATH_TO_URL), properties.getProperty(PATH_TO_USERNAME), properties.getProperty(PATH_TO_PASSWORD));
+
+            PreparedStatement statement = connection.prepareStatement("select count(*) as counter from friendships WHERE user_id2=? or user_id1=? and pending=0");
+            statement.setLong(1, id);
+            statement.setLong(2, id);
+            ResultSet resultSet = statement.executeQuery();
+            resultSet.next();
+            count = resultSet.getInt("counter");
+            return count;
+        }catch (SQLException | IOException e) {
+            e.printStackTrace();
+        }
+        return 0;
     }
 
     private static Properties getProperties() throws IOException {

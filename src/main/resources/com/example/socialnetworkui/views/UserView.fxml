@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -8,9 +9,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="498.0" prefWidth="718.0" stylesheets="@../css/style.css " xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.socialnetworkui.controller.UserController">
+<AnchorPane prefHeight="523.0" prefWidth="736.0" stylesheets="@../css/style.css " xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.socialnetworkui.controller.UserController">
    <children>
-      <SplitPane dividerPositions="0.2877094972067039" prefHeight="498.0" prefWidth="718.0">
+      <SplitPane dividerPositions="0.2877094972067039" prefHeight="523.0" prefWidth="736.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #31527c;">
                <children>
@@ -45,7 +46,7 @@
                    </Button>
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="544.0" prefWidth="547.0">
                <children>
                   <TableView fx:id="tableViewFriends1" layoutX="14.0" layoutY="14.0" prefHeight="425.0" prefWidth="477.0">
                      <columns>
@@ -59,18 +60,21 @@
                       <TableColumn fx:id="tableColumnLastNameFriends" minWidth="0.0" prefWidth="238.0" text="LastName" />
                     </columns>
                   </TableView>
-                  <Button fx:id="buttonAdd" layoutX="334.0" layoutY="459.0" mnemonicParsing="false" onAction="#handleAdd" text="Add">
+                  <Button fx:id="buttonAdd" layoutX="335.0" layoutY="481.0" mnemonicParsing="false" onAction="#handleAdd" text="Add">
                      <font>
                         <Font name="Arial" size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="buttonDelete" layoutX="418.0" layoutY="459.0" mnemonicParsing="false" onAction="#handleDelete" text="Delete" />
-                  <Button fx:id="buttonText" layoutX="251.0" layoutY="459.0" mnemonicParsing="false" onAction="#handleText" prefHeight="26.0" prefWidth="75.0" text="Text">
+                  <Button fx:id="buttonDelete" layoutX="419.0" layoutY="481.0" mnemonicParsing="false" onAction="#handleDelete" text="Delete" />
+                  <Button fx:id="buttonText" layoutX="252.0" layoutY="481.0" mnemonicParsing="false" onAction="#handleText" prefHeight="26.0" prefWidth="75.0" text="Text">
                      <font>
                         <Font name="Arial" size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="buttonNofication" layoutX="10.0" layoutY="457.0" mnemonicParsing="false" onAction="#handleNotification" textFill="RED" />
+                  <Button fx:id="buttonNofication" layoutX="11.0" layoutY="479.0" mnemonicParsing="false" onAction="#handleNotification" textFill="RED" />
+                  <Button fx:id="buttonNext" layoutX="284.0" layoutY="446.0" minWidth="34.0" mnemonicParsing="false" onAction="#handleNext" prefHeight="23.0" prefWidth="34.0" text="&gt;" />
+                  <Button fx:id="buttonPrevious" layoutX="179.0" layoutY="446.0" minWidth="30.0" mnemonicParsing="false" onAction="#handlePrevious" prefHeight="23.0" prefWidth="30.0" text="&lt;" />
+                  <Label fx:id="labelPage" alignment="CENTER" contentDisplay="CENTER" layoutX="209.0" layoutY="447.0" prefHeight="20.0" prefWidth="75.0" text="Label" />
                </children></AnchorPane>
         </items>
       </SplitPane>

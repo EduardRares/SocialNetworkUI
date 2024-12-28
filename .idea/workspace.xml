@@ -5,21 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="84085854-000b-4d15-a654-331377aca020" name="Changes" comment="V1.1">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/controller/NotificationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/utils/Page.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/utils/Pageable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/controller/MessageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/controller/MessageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/controller/NotificationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/controller/NotificationController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/domain/Friendship.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/domain/Friendship.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/domain/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/domain/Message.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/repository/db/FriendshipDBRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/repository/db/FriendshipDBRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/repository/db/MessageDBRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/repository/db/MessageDBRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/repository/memory/InMemoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/repository/memory/InMemoryRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/service/FriendshipService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/service/FriendshipService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/service/MessageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/service/MessageService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/utils/events/UtilizatorEntityChangeEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/utils/events/EntityChangeEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/socialnetworkui/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/socialnetworkui/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/socialnetworkui/views/UserView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/socialnetworkui/views/UserView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -56,6 +52,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="FxmlFile" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -63,6 +60,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;EduardRares&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/EduardRares/SocialNetworkUI.git&quot;,
+    &quot;accountId&quot;: &quot;f9d95971-58a5-4f07-bfba-55f9a53f29e3&quot;
+  }
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
 }</component>
@@ -86,7 +95,7 @@
     &quot;full.screen.before.presentation.mode&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/subre/Downloads/lab6-exemplu-GUI&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Faculta/MAP/Lab10-Caching&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -101,6 +110,9 @@
   &quot;keyToStringList&quot;: {
     &quot;DatabaseDriversLRU&quot;: [
       &quot;postgresql&quot;
+    ],
+    &quot;com.intellij.ide.scratch.LRUPopupBuilder$1/SQL Dialect&quot;: [
+      &quot;PostgreSQL&quot;
     ]
   }
 }</component>
@@ -129,8 +141,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.21565.193" />
-        <option value="bundled-js-predefined-d6986cc7102b-e768b9ed790e-JavaScript-IU-243.21565.193" />
+        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.22562.145" />
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-IU-243.22562.145" />
       </set>
     </attachedChunks>
   </component>
@@ -175,6 +187,19 @@
       <workItem from="1732186722119" duration="1336000" />
       <workItem from="1732481316404" duration="3000" />
       <workItem from="1732481572391" duration="1107000" />
+      <workItem from="1732482694524" duration="799000" />
+      <workItem from="1732601852004" duration="19000" />
+      <workItem from="1732604251753" duration="1246000" />
+      <workItem from="1732723425557" duration="1055000" />
+      <workItem from="1732926147775" duration="3055000" />
+      <workItem from="1733144833195" duration="2035000" />
+      <workItem from="1733205948955" duration="2481000" />
+      <workItem from="1733811130981" duration="1849000" />
+      <workItem from="1733873201233" duration="212000" />
+      <workItem from="1733906779608" duration="1266000" />
+      <workItem from="1733934473817" duration="1005000" />
+      <workItem from="1734011854794" duration="60000" />
+      <workItem from="1734011970252" duration="768000" />
     </task>
     <task id="LOCAL-00001" summary="V1">
       <option name="closed" value="true" />
@@ -208,7 +233,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732089421096</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="V1.1">
+      <option name="closed" value="true" />
+      <created>1732482870503</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1732482870503</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
