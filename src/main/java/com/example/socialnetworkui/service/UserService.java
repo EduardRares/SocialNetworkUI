@@ -5,6 +5,9 @@ import com.example.socialnetworkui.domain.validators.ValidationException;
 import com.example.socialnetworkui.repository.*;
 import com.example.socialnetworkui.repository.db.UserDBRepository;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
 import java.util.Optional;
 
 public class UserService {
@@ -25,6 +28,7 @@ public class UserService {
             }
         }
         user.setId(idMax + 1);
+        user.setPassword(hashPassword(user.getPassword()));
         return userRepository.save(user);
     }
 
@@ -42,7 +46,7 @@ public class UserService {
     }
 
     public User login(String email, String password) {
-        return UserDBRepository.login(email, password);
+        return UserDBRepository.login(email, hashPassword(password));
     }
 
     public Optional<User> userById(Long id) {
@@ -51,5 +55,28 @@ public class UserService {
 
     public Iterable<User> getAll() {
         return userRepository.findAll();
+    }
+
+    private String hashPassword(String password){
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            md.update(password.getBytes());
+            byte[] digest = md.digest();
+            StringBuilder hexString = new StringBuilder();
+            for (byte b : digest) {
+                hexString.append(Integer.toString((b & 0xff) + 0x100, 16).substring(1));
+            }
+            return hexString.toString();
+        }
+        catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public void updatetoHashPassword() {
+        for(User u : userRepository.findAll()) {
+            u.setPassword(hashPassword(u.getPassword()));
+            userRepository.update(u);
+        }
     }
 }
