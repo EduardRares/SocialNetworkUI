@@ -74,6 +74,7 @@ public class UserController implements Observer<EntityChangeEvent> {
         friend = null;
         listofFriends = new ArrayList<>();
         noofNofications();
+        //userService.updatetoHashPassword();
     }
     public void setStages(Stage dialogStage, Stage loginStage) {
         this.dialogStage = dialogStage;

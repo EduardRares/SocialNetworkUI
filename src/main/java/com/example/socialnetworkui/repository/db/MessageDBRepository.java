@@ -194,7 +194,7 @@ public class MessageDBRepository implements Repository<Long, Message> {
     }
 
     private static Properties getProperties() throws IOException {
-        InputStream input = new FileInputStream("D:\\Faculta\\MAP\\SocialNetworkUI1\\src\\main\\resources\\app.properties");
+        InputStream input = new FileInputStream("src/main/resources/app.properties");
         Properties properties = new Properties();
         properties.load(input);
         return properties;
