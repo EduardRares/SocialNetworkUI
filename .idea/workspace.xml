@@ -5,22 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="84085854-000b-4d15-a654-331377aca020" name="Changes" comment="V1.1">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/controller/NotificationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b5eec9d8-388f-4f7a-b0fc-2c8ee32e3a28.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b5eec9d8-388f-4f7a-b0fc-2c8ee32e3a28.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b5eec9d8-388f-4f7a-b0fc-2c8ee32e3a28/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b5eec9d8-388f-4f7a-b0fc-2c8ee32e3a28/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/controller/MessageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/controller/MessageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/domain/Friendship.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/domain/Friendship.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/domain/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/domain/Message.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/repository/db/FriendshipDBRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/repository/db/FriendshipDBRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/repository/db/MessageDBRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/repository/db/MessageDBRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/service/FriendshipService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/service/FriendshipService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/service/MessageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/service/MessageService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/utils/events/UtilizatorEntityChangeEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/utils/events/EntityChangeEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/socialnetworkui/views/UserView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/socialnetworkui/views/UserView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/repository/db/UserDBRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/repository/db/UserDBRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,6 +54,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "EduardRares"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/EduardRares/SocialNetworkUI.git",
+    "accountId": "bdb4cc1f-e3c1-4bc6-8495-a8159ec8757c"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
 }</component>
@@ -74,36 +77,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Gradle.Build SocialNetworkUI1.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Download Sources.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.SocialNetworkUI1 [:com.example.socialnetworkui.Main.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.SocialNetworkUI1 [:com.example.socialnetworkui1.Main.main()].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;full.screen.before.presentation.mode&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/subre/Downloads/lab6-exemplu-GUI&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.37471265&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.Build SocialNetworkUI1.executor": "Run",
+    "Gradle.Download Sources.executor": "Run",
+    "Gradle.SocialNetworkUI [:com.example.socialnetworkui.Main.main()].executor": "Run",
+    "Gradle.SocialNetworkUI1 [:com.example.socialnetworkui.Main.main()].executor": "Run",
+    "Gradle.SocialNetworkUI1 [:com.example.socialnetworkui1.Main.main()].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "full.screen.before.presentation.mode": "false",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/subre/Downloads/lab6-exemplu-GUI",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.37471265",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Faculta\MAP\SocialNetworkUI1\src\main\java\com\example\socialnetworkui1" />
@@ -125,12 +129,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="SocialNetworkUI" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="SocialNetworkUI" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.21565.193" />
-        <option value="bundled-js-predefined-d6986cc7102b-e768b9ed790e-JavaScript-IU-243.21565.193" />
+        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.22562.218" />
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-IU-243.22562.218" />
       </set>
     </attachedChunks>
   </component>
@@ -175,6 +190,7 @@
       <workItem from="1732186722119" duration="1336000" />
       <workItem from="1732481316404" duration="3000" />
       <workItem from="1732481572391" duration="1107000" />
+      <workItem from="1735429671647" duration="4536000" />
     </task>
     <task id="LOCAL-00001" summary="V1">
       <option name="closed" value="true" />
@@ -221,5 +237,16 @@
     <MESSAGE value="V1" />
     <MESSAGE value="V1.1" />
     <option name="LAST_COMMIT_MESSAGE" value="V1.1" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/controller/LogInController.java</url>
+          <line>69</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
