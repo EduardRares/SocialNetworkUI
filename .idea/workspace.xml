@@ -4,10 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="84085854-000b-4d15-a654-331377aca020" name="Changes" comment="V1.2">
+    <list default="true" id="84085854-000b-4d15-a654-331377aca020" name="Changes" comment="V1.3 Hashed passwords">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/controller/ProfileController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b5eec9d8-388f-4f7a-b0fc-2c8ee32e3a28.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b5eec9d8-388f-4f7a-b0fc-2c8ee32e3a28.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b5eec9d8-388f-4f7a-b0fc-2c8ee32e3a28/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b5eec9d8-388f-4f7a-b0fc-2c8ee32e3a28/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/domain/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/repository/db/UserDBRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/repository/db/UserDBRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/socialnetworkui/images/logo.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/socialnetworkui/images/logo2.jpg" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +84,7 @@
   "keyToString": {
     "Gradle.Build SocialNetworkUI1.executor": "Run",
     "Gradle.Download Sources.executor": "Run",
-    "Gradle.SocialNetworkUI [:com.example.socialnetworkui.Main.main()].executor": "Debug",
+    "Gradle.SocialNetworkUI [:com.example.socialnetworkui.Main.main()].executor": "Run",
     "Gradle.SocialNetworkUI1 [:com.example.socialnetworkui.Main.main()].executor": "Run",
     "Gradle.SocialNetworkUI1 [:com.example.socialnetworkui1.Main.main()].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -95,7 +102,7 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.37471265",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -188,7 +195,10 @@
       <workItem from="1732481572391" duration="1107000" />
       <workItem from="1735429671647" duration="4579000" />
       <workItem from="1735439364002" duration="24000" />
-      <workItem from="1735468682914" duration="1387000" />
+      <workItem from="1735468682914" duration="4849000" />
+      <workItem from="1735490930613" duration="761000" />
+      <workItem from="1735491715518" duration="1459000" />
+      <workItem from="1735494972931" duration="3681000" />
     </task>
     <task id="LOCAL-00001" summary="V1">
       <option name="closed" value="true" />
@@ -230,7 +240,15 @@
       <option name="project" value="LOCAL" />
       <updated>1735437151422</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="V1.3 Hashed passwords">
+      <option name="closed" value="true" />
+      <created>1735470190066</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1735470190066</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -243,15 +261,21 @@
     <MESSAGE value="V1" />
     <MESSAGE value="V1.1" />
     <MESSAGE value="V1.2" />
-    <option name="LAST_COMMIT_MESSAGE" value="V1.2" />
+    <MESSAGE value="V1.3 Hashed passwords" />
+    <option name="LAST_COMMIT_MESSAGE" value="V1.3 Hashed passwords" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/service/UserService.java</url>
-          <line>76</line>
-          <option name="timeStamp" value="3" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/repository/db/UserDBRepository.java</url>
+          <line>39</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/repository/db/UserDBRepository.java</url>
+          <line>27</line>
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

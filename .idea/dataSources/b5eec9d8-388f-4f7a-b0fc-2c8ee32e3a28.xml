@@ -3,9 +3,9 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.53">
     <root id="1">
       <DateStyle>mdy</DateStyle>
-      <IntrospectionStateNumber>754</IntrospectionStateNumber>
+      <IntrospectionStateNumber>834</IntrospectionStateNumber>
       <ServerVersion>16.6</ServerVersion>
-      <StartupTime>1735434337</StartupTime>
+      <StartupTime>1735440371</StartupTime>
       <TimeZones>true ACDT
 true ACSST
 false ACST
@@ -801,7 +801,7 @@ false Zulu
 13452||10|C|G
 13452||-9223372036854775808|U|G
 13452||10|U|G</Grants>
-      <IntrospectionStateNumber>754</IntrospectionStateNumber>
+      <IntrospectionStateNumber>834</IntrospectionStateNumber>
       <ObjectId>5</ObjectId>
       <OwnerName>postgres</OwnerName>
     </database>
@@ -4234,8 +4234,8 @@ false Zulu
     <schema id="264" parent="2" name="public">
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <IntrospectionStateNumber>754</IntrospectionStateNumber>
-      <LastIntrospectionLocalTimestamp>2024-12-29.01:23:49</LastIntrospectionLocalTimestamp>
+      <IntrospectionStateNumber>834</IntrospectionStateNumber>
+      <LastIntrospectionLocalTimestamp>2024-12-29.20:20:41</LastIntrospectionLocalTimestamp>
       <ObjectId>2200</ObjectId>
       <StateNumber>524</StateNumber>
       <OwnerName>pg_database_owner</OwnerName>
@@ -4260,7 +4260,7 @@ false Zulu
     </table>
     <table id="268" parent="264" name="users">
       <ObjectId>16398</ObjectId>
-      <StateNumber>750</StateNumber>
+      <StateNumber>833</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
@@ -4416,11 +4416,23 @@ user_id</ColNames>
     <column id="290" parent="268" name="password">
       <NotNull>1</NotNull>
       <Position>5</Position>
-      <StateNumber>744</StateNumber>
-      <StoredType>varchar(50)|0s</StoredType>
+      <StateNumber>814</StateNumber>
+      <StoredType>text|0s</StoredType>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="291" parent="268" name="profileimagepath">
+      <Position>7</Position>
+      <StateNumber>779</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <index id="291" parent="268" name="users_pkey">
+    <column id="292" parent="268" name="description">
+      <Position>8</Position>
+      <StateNumber>833</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="293" parent="268" name="users_pkey">
       <ColNames>user_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16401</ObjectId>
@@ -4429,7 +4441,7 @@ user_id</ColNames>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="292" parent="268" name="users_pkey">
+    <key id="294" parent="268" name="users_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16402</ObjectId>
       <Primary>1</Primary>
