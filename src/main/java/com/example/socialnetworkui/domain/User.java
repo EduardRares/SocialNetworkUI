@@ -8,6 +8,7 @@ public class User extends Entity<Long>{
     private String lastName;
     private String email;
     private String password;
+    private String pathToImage;
 
     public void setEmail(String email) {
         this.email = email;
@@ -19,6 +20,18 @@ public class User extends Entity<Long>{
 
     public String getPassword() {
         return password;
+    }
+
+    public String getPathToImage() {
+        return pathToImage;
+    }
+
+    public User(String firstName, String lastName, String email, String password, String pathToImage) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.pathToImage = pathToImage;
     }
 
     public User(String firstName, String lastName, String email, String password) {

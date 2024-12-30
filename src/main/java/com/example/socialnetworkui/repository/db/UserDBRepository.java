@@ -37,7 +37,8 @@ public class UserDBRepository implements Repository<Long, User> {
             String lastName = resultSet.getString(3);
             String emailAddress = resultSet.getString(4);
             String password1 = resultSet.getString(5);
-            User user =  new User(firstName, lastName, emailAddress, password1);
+            String path = resultSet.getString(6);
+            User user =  new User(firstName, lastName, emailAddress, password1, path);
             user.setId(id);
             return user;
         } catch (SQLException | IOException e) {
@@ -58,8 +59,8 @@ public class UserDBRepository implements Repository<Long, User> {
             String lastName = resultSet.getString("lastname");
             String email = resultSet.getString("email");
             String password = resultSet.getString("password");
-
-            User user = new User(firstName, lastName, email, password);
+            String path = resultSet.getString("ProfileImagePath");
+            User user = new User(firstName, lastName, email, password, path);
             user.setId(aLong);
             return Optional.of(user);
         } catch (SQLException | IOException e) {
@@ -82,8 +83,9 @@ public class UserDBRepository implements Repository<Long, User> {
                 String lastName = resultSet.getString("lastname");
                 String email = resultSet.getString("email");
                 String password = resultSet.getString("password");
+                String path = resultSet.getString("ProfileImagePath");
 
-                User user = new User(firstName, lastName, email, password);
+                User user = new User(firstName, lastName, email, password, path);
                 user.setId(id);
                 if(!("admin".equals(user.getEmail()) && "admin".equals(user.getPassword()))) {
                     users.put(id, user);
