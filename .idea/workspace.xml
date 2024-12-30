@@ -4,15 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="84085854-000b-4d15-a654-331377aca020" name="Changes" comment="V1.3.1">
+    <list default="true" id="84085854-000b-4d15-a654-331377aca020" name="Changes" comment="V1.4.1 Buttons + functionality added for ProfileView">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/controller/ProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/controller/ProfileController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/domain/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/repository/db/FriendshipDBRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/repository/db/FriendshipDBRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/repository/db/UserDBRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/repository/db/UserDBRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/socialnetworkui/views/ProfileView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/socialnetworkui/views/ProfileView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/socialnetworkui/views/UserView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/socialnetworkui/views/UserView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -197,7 +193,8 @@
       <workItem from="1735490930613" duration="761000" />
       <workItem from="1735491715518" duration="1459000" />
       <workItem from="1735494972931" duration="3681000" />
-      <workItem from="1735523069645" duration="5842000" />
+      <workItem from="1735523069645" duration="5971000" />
+      <workItem from="1735581195236" duration="2745000" />
     </task>
     <task id="LOCAL-00001" summary="V1">
       <option name="closed" value="true" />
@@ -247,7 +244,15 @@
       <option name="project" value="LOCAL" />
       <updated>1735470190066</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="V1.4.1 Buttons + functionality added for ProfileView">
+      <option name="closed" value="true" />
+      <created>1735570934859</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1735570934859</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -261,6 +266,23 @@
     <MESSAGE value="V1.1" />
     <MESSAGE value="V1.2" />
     <MESSAGE value="V1.3 Hashed passwords" />
-    <option name="LAST_COMMIT_MESSAGE" value="V1.3 Hashed passwords" />
+    <MESSAGE value="V1.4.1 Buttons + functionality added for ProfileView" />
+    <option name="LAST_COMMIT_MESSAGE" value="V1.4.1 Buttons + functionality added for ProfileView" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/controller/UserController.java</url>
+          <line>130</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/socialnetworkui/controller/UserController.java</url>
+          <line>136</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

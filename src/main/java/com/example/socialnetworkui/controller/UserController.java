@@ -16,6 +16,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -122,6 +123,19 @@ public class UserController implements Observer<EntityChangeEvent> {
         tableViewFriends1.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         tableViewFriends1.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             listofFriends = tableViewFriends1.getSelectionModel().getSelectedItems();
+        });
+
+        tableViewFriends1.setOnMouseClicked(event -> {
+            if (event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 2) {
+                User u = tableViewFriends1.getSelectionModel().getSelectedItem();
+                openProfileViewforaSpecificUser(u);
+            }
+        });
+        tableViewFriends.setOnMouseClicked(event -> {
+            if (event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 2) {
+                User u = tableViewFriends.getSelectionModel().getSelectedItem();
+                openProfileViewforaSpecificUser(u);
+            }
         });
     }
 
@@ -316,4 +330,29 @@ public class UserController implements Observer<EntityChangeEvent> {
         }
         stage.showAndWait();
     }
+
+    private void openProfileViewforaSpecificUser(User u) {
+        Stage stage = new Stage();
+        stage.setTitle("Text");
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("views/ProfileView.fxml"));
+        try {
+            AnchorPane userLayout = fxmlLoader.load();
+            stage.setScene(new Scene(userLayout));
+            stage.initModality(Modality.APPLICATION_MODAL);
+            ProfileController profileController = fxmlLoader.getController();
+            profileController.setService(userService, friendshipService, messageService, user, u, listofFriends, listofNotifications, buttonNofication);
+            if (listofNotifications.size() == 1 && !listofFriends.isEmpty()) {
+                Message m = new Message("", listofFriends.getFirst(), null, null);
+                while (listofNotifications.remove(m)) {
+                    ;
+                }
+                buttonNofication.setText(listofNotifications.size() + " Not.");
+            }
+            stage.showAndWait();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

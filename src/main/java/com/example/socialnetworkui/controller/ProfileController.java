@@ -1,9 +1,7 @@
 package com.example.socialnetworkui.controller;
 
 import com.example.socialnetworkui.HelloApplication;
-import com.example.socialnetworkui.domain.Entity;
-import com.example.socialnetworkui.domain.Message;
-import com.example.socialnetworkui.domain.User;
+import com.example.socialnetworkui.domain.*;
 import com.example.socialnetworkui.service.FriendshipService;
 import com.example.socialnetworkui.service.MessageService;
 import com.example.socialnetworkui.service.UserService;
@@ -34,6 +32,8 @@ public class ProfileController {
     @FXML
     public Button textButton;
     @FXML
+    public Label noFriends;
+    @FXML
     ImageView imageView;
 
     private User user;
@@ -60,8 +60,13 @@ public class ProfileController {
     private void init() {
         nameOfUser.setText(user.getFirstName() + " " + user.getLastName());
         description.setText(user.getDescription());
-        Image profilePhoto = new Image(user.getPathToImage());
-        imageView.setImage(profilePhoto);
+        try {
+            Image profilePhoto = new Image(user.getPathToImage());
+            imageView.setImage(profilePhoto);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        noFriends.setText(String.valueOf(friendshipService.noofFriends(user.getId())) + " friends");
         if(user == mainUser) {
             addButton.setVisible(false);
             textButton.setVisible(false);
@@ -118,6 +123,10 @@ public class ProfileController {
         }
         else if(addButton.getText().equals("Accept")) {
             friendshipService.sendFriendRequest(mainUser.getId(), user.getId());
+            Friendship d = new Friendship();
+            d.setId(new Tuple<>(user.getId(), mainUser.getId()));
+            listofNotifications.remove(d);
+            buttonNofication.setText(listofNotifications.size() + " Not.");
             addButton.setText("Delete");
         }
         else if(addButton.getText().equals("Delete")) {

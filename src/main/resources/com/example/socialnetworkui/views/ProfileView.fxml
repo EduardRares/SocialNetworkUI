@@ -21,6 +21,7 @@
                   <Label fx:id="nameOfUser" layoutX="24.0" layoutY="61.0" prefHeight="28.0" prefWidth="120.0" text="Label" />
                   <Button fx:id="addButton" layoutX="174.0" layoutY="63.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="80.0" onAction="#handleFriends" text="Friend" />
                   <Button fx:id="textButton" layoutX="271.0" layoutY="63.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="80.0" onAction="#handleText" text="Message" />
+                  <Label fx:id="noFriends" layoutX="24.0" layoutY="80.0" prefHeight="28.0" prefWidth="120.0" text="LabelFriends" />
                   <TextArea fx:id="description" disable="true" layoutX="23.0" layoutY="134.0" prefHeight="179.0" prefWidth="330.0" />
                </children>
             </AnchorPane>
