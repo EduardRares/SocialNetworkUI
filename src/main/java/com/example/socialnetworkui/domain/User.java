@@ -9,6 +9,7 @@ public class User extends Entity<Long>{
     private String email;
     private String password;
     private String pathToImage;
+    private String description;
 
     public void setEmail(String email) {
         this.email = email;
@@ -26,12 +27,13 @@ public class User extends Entity<Long>{
         return pathToImage;
     }
 
-    public User(String firstName, String lastName, String email, String password, String pathToImage) {
+    public User(String firstName, String lastName, String email, String password, String pathToImage, String description) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.pathToImage = pathToImage;
+        this.description = description;
     }
 
     public User(String firstName, String lastName, String email, String password) {
@@ -44,6 +46,8 @@ public class User extends Entity<Long>{
     public String getFirstName() {
         return firstName;
     }
+
+    public String getDescription() { return description; }
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;

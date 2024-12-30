@@ -32,7 +32,7 @@
                               <Font name="Arial" size="14.0" />
                            </font>
                         </Button>
-                        <Button mnemonicParsing="false" onAction="#handleMessageFriend" prefHeight="32.0" prefWidth="127.0" text="Message">
+                         <Button mnemonicParsing="false" onAction="#handleProfile" prefHeight="32.0" prefWidth="127.0" text="Profile">
                            <font>
                               <Font name="Arial" size="14.0" />
                            </font>

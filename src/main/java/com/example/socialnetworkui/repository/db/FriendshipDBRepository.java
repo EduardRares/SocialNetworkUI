@@ -71,7 +71,7 @@ public class FriendshipDBRepository implements Repository<Tuple<Long, Long>, Fri
         return null;
     }
 
-    public static Iterable<Long> findById(Long id) {
+    public static Iterable<Long>    findById(Long id) {
         Set<Long> ids = new HashSet<>();
         try {
             Properties properties = FriendshipDBRepository.getProperties();

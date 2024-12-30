@@ -127,8 +127,8 @@ public class UserController implements Observer<EntityChangeEvent> {
 
     @FXML
     public void handleFriends() {
-        tableViewFriends1.setVisible(false);
-        tableViewFriends.setVisible(true);
+        tableViewFriends1.setVisible(true);
+        tableViewFriends.setVisible(false);
         model.clear();
         currentPage = 1;
         records = friendshipService.noofFriends(user.getId());
@@ -139,14 +139,13 @@ public class UserController implements Observer<EntityChangeEvent> {
             Optional<User> user = userService.userById(id);
             user.ifPresent(value -> model.add(value));
         }
-        tableViewFriends.setItems(model);
+        tableViewFriends1.setItems(model);
         buttonDelete.setVisible(true);
         buttonNext.setVisible(true);
         buttonPrevious.setVisible(true);
         buttonAdd.setVisible(false);
-        buttonText.setVisible(false);
+        buttonText.setVisible(true);
         labelPage.setVisible(true);
-        friend = null;
     }
 
     @FXML
@@ -201,24 +200,6 @@ public class UserController implements Observer<EntityChangeEvent> {
     }
 
     @FXML
-    public void handleMessageFriend() {
-        tableViewFriends1.setVisible(true);
-        tableViewFriends.setVisible(false);
-        modelMessageFriends.clear();
-        for(Long id : friendshipService.FriendsofanId(user.getId())) {
-            Optional<User> user = userService.userById(id);
-            user.ifPresent(value -> modelMessageFriends.add(value));
-        }
-        tableViewFriends1.setItems(modelMessageFriends);
-        buttonNext.setVisible(false);
-        buttonPrevious.setVisible(false);
-        buttonAdd.setVisible(false);
-        buttonDelete.setVisible(false);
-        buttonText.setVisible(true);
-        labelPage.setVisible(false);
-    }
-
-    @FXML
     public void handleAdd() {
         if(!buttonDelete.isVisible()) {
             friendshipService.sendFriendRequest(user.getId(), friend.getId());
@@ -267,7 +248,7 @@ public class UserController implements Observer<EntityChangeEvent> {
         MessageController messageController = fxmlLoader.getController();
         messageController.setService(messageService, userService);
         messageController.setReceivers(user, listofFriends);
-        if(listofNotifications.size() == 1) {
+        if(!listofNotifications.isEmpty()) {
             Message m = new Message("", listofFriends.getFirst(), null, null);
             while(listofNotifications.remove(m)) {};
             buttonNofication.setText(listofNotifications.size() + " Not.");
@@ -317,5 +298,22 @@ public class UserController implements Observer<EntityChangeEvent> {
             }
             labelPage.setText(currentPage + " of " + records / 2);
         }
+    }
+
+    public void handleProfile() throws IOException {
+        Stage stage = new Stage();
+        stage.setTitle("Text");
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("views/ProfileView.fxml"));
+        AnchorPane userLayout = fxmlLoader.load();
+        stage.setScene(new Scene(userLayout));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        ProfileController profileController = fxmlLoader.getController();
+        profileController.setService(userService, friendshipService, messageService, user, user, listofFriends, listofNotifications, buttonNofication);
+        if (listofNotifications.size() == 1 && !listofFriends.isEmpty()) {
+            Message m = new Message("", listofFriends.getFirst(), null, null);
+            while (listofNotifications.remove(m)) {;}
+            buttonNofication.setText(listofNotifications.size() + " Not.");
+        }
+        stage.showAndWait();
     }
 }
