@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="394.0" prefWidth="602.0" stylesheets="@../css/style.css " xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.socialnetworkui.controller.ProfileController">
+   <children>
+      <SplitPane dividerPositions="0.37" prefHeight="394.0" prefWidth="602.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="10.0" layoutY="121.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="341.0" prefWidth="398.0">
+               <children>
+                  <Label layoutX="24.0" layoutY="61.0" prefHeight="28.0" prefWidth="58.0" text="Label" />
+                  <Button layoutX="174.0" layoutY="63.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="64.0" text="Button" />
+                  <Button layoutX="271.0" layoutY="63.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="64.0" text="Button" />
+                  <TextArea disable="true" layoutX="23.0" layoutY="134.0" prefHeight="179.0" prefWidth="330.0" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
