@@ -52,10 +52,14 @@ public class MessageController {
             messageService.markRead(receivers.getFirst().getId(), user.getId());
             List<Message> messages = new ArrayList<>();
             for(Message message : messageService.findAllbyUser(user.getId())) {
-                messages.add(message);
+                if(message.getTo().contains(receivers.getFirst())) {
+                    messages.add(message);
+                }
             }
             for(Message message : messageService.findAllbyUser(receivers.getFirst().getId())) {
-                messages.add(message);
+                if(message.getTo().contains(user)) {
+                    messages.add(message);
+                }
             }
             if(!messages.isEmpty()) {
                 Comparator<Message> comparator = (x, y) -> x.getDate().compareTo(y.getDate());

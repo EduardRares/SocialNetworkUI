@@ -106,8 +106,8 @@ public class ProfileController {
         stage.initModality(Modality.APPLICATION_MODAL);
         MessageController messageController = fxmlLoader.getController();
         messageController.setService(messageService, userService);
-        messageController.setReceivers(user, listofFriends);
-        if(listofNotifications.size() == 1) {
+        messageController.setReceivers(mainUser, listofFriends);
+        if(!listofNotifications.isEmpty()) {
             com.example.socialnetworkui.domain.Message m = new Message("", listofFriends.getFirst(), null, null);
             while(listofNotifications.remove(m)) {};
             buttonNofication.setText(listofNotifications.size() + " Not.");
@@ -128,10 +128,12 @@ public class ProfileController {
             listofNotifications.remove(d);
             buttonNofication.setText(listofNotifications.size() + " Not.");
             addButton.setText("Delete");
+            textButton.setVisible(true);
         }
         else if(addButton.getText().equals("Delete")) {
             friendshipService.deleteFriendship(mainUser.getId(), user.getId());
             addButton.setText("Add");
+            textButton.setVisible(false);
         }
         else if(addButton.getText().equals("Pending")) {
             friendshipService.deleteFriendship(mainUser.getId(), user.getId());
